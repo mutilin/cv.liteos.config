@@ -1,0 +1,67 @@
+{
+  "dirs": {
+    "work": "work_dir",
+    "results": "results"
+  },
+  "Generator": {
+    "strategies": {
+      "sync:races": "threaded"
+    }
+  },
+  "Builder": {
+    "sources": [
+      {
+        "id": "OSE",
+        "source dir": "/home/alpha/git/LiteOS/",
+        "branch": "master",
+        "build patch ": "LiteOS.patch",
+        "patches": ["LiteOS.patch"],
+        "repository": "git",
+        "skip": false,
+        "build config": {
+          "make command": "make",
+          "fail if build fails": true,
+          "make target dir": "/home/alpha/git/LiteOS/targets/Cloud_STM32F429IGTx_FIRE/GCC/"
+        }
+      }
+    ],
+    "debug": true
+  },
+  "Preparator": {
+    "extra options ": ["-DOSMIPS", "-D__MIPSEL__", "-D__mips", "-D_MIPS_SZLONG=64"],
+    "filter black list ": [
+      "core_dep",
+      "core_xex",
+      "core_xep",
+      "core_dex"
+    ],
+    "debug": true,
+    "preprocessor ": "/home/alpha/git/oc2000-sdrd.cv/tools/cif/bin/cif",
+    "preprocessor": "arm-none-eabi-gcc",
+    "aspect ": "/home/alpha/work/cv/configs/empty.aspect",
+    "resolve missed proto": true,
+    "strategy ": "subsystem"
+  },
+  "Launcher": {
+    "scheduler": "local",
+    "resource limits": {
+      "CPU time": 1800,
+      "memory size": 8,
+      "number of cores": 2
+    }
+  },
+  "Exporter": {
+    "version": "ose5.5",
+    "debug": false
+  },
+  "MEA": {
+    "parallel launches": 2,
+    "debug": false
+  },
+  "system": "LiteOS",
+  "entrypoints desc": ["example_LiteOS"],
+  "rules": ["sync:races"],
+  "debug": true,
+  "cached": false,
+  "find coverage": false
+}

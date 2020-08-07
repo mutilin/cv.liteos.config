@@ -1,0 +1,13 @@
+{
+    "metadata": {
+        "include": [],
+        "subsystem ": "subdirectory in source directory (default value is '.')"
+    },
+    "entrypoints": {
+        "main": {
+            "return": "void",
+            "races": true,
+            "args": []
+        }
+    }
+}
