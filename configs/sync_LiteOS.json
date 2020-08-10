@@ -11,8 +11,8 @@
   "Builder": {
     "sources": [
       {
-        "id": "OSE",
-        "source dir": "/home/alpha/git/LiteOS/",
+        "id": "liteos",
+        "source dir": "path to LiteOS/",
         "branch": "master",
         "build patch ": "LiteOS.patch",
         "patches": ["LiteOS.patch"],
@@ -21,7 +21,7 @@
         "build config": {
           "make command": "make",
           "fail if build fails": true,
-          "make target dir": "/home/alpha/git/LiteOS/targets/Cloud_STM32F429IGTx_FIRE/GCC/"
+          "make target dir": "path to LiteOS/targets/Cloud_STM32F429IGTx_FIRE/GCC/"
         }
       }
     ],
@@ -36,29 +36,34 @@
       "core_dex"
     ],
     "debug": true,
-    "preprocessor ": "/home/alpha/git/oc2000-sdrd.cv/tools/cif/bin/cif",
+    "preprocessor ": "path to cv/tools/cif/bin/cif",
     "preprocessor": "arm-none-eabi-gcc",
-    "aspect ": "/home/alpha/work/cv/configs/empty.aspect",
+    "aspect ": "path to cv/configs/empty.aspect",
     "resolve missed proto": true,
+    "cil options": ["-no-print-annot", "-print-lines", "-no-findlib", "-no-autoload-plugins",
+                       "-c11", "-machdep", "x86_32", "-kernel-warn-key",
+                       "CERT:MSC:38=inactive", "-keep-logical-operators",
+                       "-print", "-ocode"],
+    "files suffix": "_tmp.i",
     "strategy ": "subsystem"
   },
   "Launcher": {
     "scheduler": "local",
     "resource limits": {
       "CPU time": 1800,
-      "memory size": 8,
+      "memory size": 5,
       "number of cores": 2
     }
   },
   "Exporter": {
-    "version": "ose5.5",
+    "version": "liteos",
     "debug": false
   },
   "MEA": {
     "parallel launches": 2,
     "debug": false
   },
-  "system": "LiteOS",
+  "system": "liteos",
   "entrypoints desc": ["example_LiteOS"],
   "rules": ["sync:races"],
   "debug": true,

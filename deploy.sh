@@ -13,10 +13,12 @@ then
 fi
 
 cd ${cv_dir}
-make install-plugin PLUGIN_DIR=${plugin_dir} PLUGIN_ID=ose
+make install-plugin PLUGIN_DIR=${plugin_dir} PLUGIN_ID=liteos
 
 if [ -n "${vcloud_dir}" ]; then
     make -j${cpu_cores} install-with-cloud DEPLOY_DIR=${deploy_dir} VCLOUD_DIR=${vcloud_dir}
 else
-    make -j${cpu_cores} install DEPLOY_DIR=${deploy_dir}
+    make -j${cpu_cores} install DEPLOY_DIR=${deploy_dir} || { echo "Failed to deploy CV"; exit 1; }
+    make install-astraver-cil DEPLOY_DIR=${deploy_dir}
+    make install-control-groups-daemon
 fi
