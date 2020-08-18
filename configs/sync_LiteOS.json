@@ -18,6 +18,7 @@
         "patches": ["LiteOS.patch"],
         "repository": "git",
         "skip": false,
+        "clean sources": true,
         "build config": {
           "make command": "make",
           "fail if build fails": true,
