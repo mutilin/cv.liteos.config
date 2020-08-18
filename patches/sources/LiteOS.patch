@@ -1341,3 +1341,16 @@ index 2d9db15a..9d8e671d 100644
    __RES; \
   })
  #endif
+diff --git a/components/net/at_device/emtc_bg36/bg36.h b/components/net/at_device/emtc_bg36/bg36.h
+index e06d271..079ae8d 100644
+--- a/components/net/at_device/emtc_bg36/bg36.h
++++ b/components/net/at_device/emtc_bg36/bg36.h
+@@ -52,7 +52,7 @@ typedef struct emtc_socket_info_t
+     int offset;
+     char *buf;
+     bool used_flag;
+-}emtc_socket_info;
++}emtc_socket_info_;
+
+
+ #define ATI "ATI\r"
