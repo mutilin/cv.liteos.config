@@ -1,11 +1,11 @@
 {
     "metadata": {
-        "include": [],
+        "include": ["platform_config.h"],
         "subsystem ": "subdirectory in source directory (default value is '.')"
     },
     "entrypoints": {
-        "main": {
-            "return": "void",
+        "OsMain": {
+            "return": "UINT32",
             "races": true,
             "args": []
         }
