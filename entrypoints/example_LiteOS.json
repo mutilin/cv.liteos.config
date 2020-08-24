@@ -1,13 +1,147 @@
 {
     "metadata": {
-        "include": ["platform_config.h"],
-        "subsystem ": "subdirectory in source directory (default value is '.')"
+        "include": ["platform_config.h", "los_task.h"],
+        "subsystem": "."
     },
     "entrypoints": {
         "OsMain": {
             "return": "UINT32",
             "races": true,
             "args": []
+        },
+        "LOS_TaskCreateOnly": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32 *"
+                },
+                {
+                    "global scope": true,
+                    "type": "TSK_INIT_PARAM_S *"
+                }
+            ]
+        },
+        "LOS_TaskCreate": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32 *"
+                },
+                {
+                    "global scope": true,
+                    "type": "TSK_INIT_PARAM_S *"
+                }
+            ]
+        },
+        "LOS_TaskDelete": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                }
+            ]
+        },
+        "LOS_TaskResume": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                }
+            ]
+        },
+        "LOS_TaskSuspend": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                }
+            ]
+        },
+        "LOS_TaskDelay": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                }
+            ]
+        },
+        "LOS_TaskYield": {
+            "return": "UINT32",
+            "races": true,
+            "args": []
+        },
+        "LOS_TaskLock": {
+            "races": true,
+            "args": []
+        },
+        "LOS_TaskUnlock": {
+            "races": true,
+            "args": []
+        },
+        "LOS_CurTaskPriSet": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT16"
+                }
+            ]
+        },
+        "LOS_TaskPriSet": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                },
+                {
+                    "global scope": true,
+                    "type": "UINT16"
+                }
+            ]
+        },
+        "LOS_TaskPriGet": {
+            "return": "UINT16",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                }
+            ]
+        },
+        "LOS_CurTaskIDGet": {
+            "return": "UINT32",
+            "races": true,
+            "args": []
+        },
+        "LOS_TaskInfoGet": {
+            "return": "UINT32",
+            "races": true,
+            "args": [
+                {
+                    "global scope": true,
+                    "type": "UINT32"
+                },
+                {
+                    "global scope": true,
+                    "type": "TSK_INFO_S *"
+                }
+            ]
         }
     }
 }
