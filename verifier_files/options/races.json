@@ -1,5 +1,5 @@
 {
-  "-lockator-threadmodular": [],
+  "-lockator-linux": [],
   "-setprop": [
     "cpa.lock.lockinfo=LOS_SpinLockSave_18",
     "cpa.lock.reduceUselessLocks=true"
