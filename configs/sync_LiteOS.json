@@ -6,7 +6,8 @@
   "Generator": {
     "strategies": {
       "sync:races": "threaded"
-    }
+    },
+    "ignore pthread_attr_t": true
   },
   "Builder": {
     "sources": [
