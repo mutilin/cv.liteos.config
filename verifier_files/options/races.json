@@ -1,7 +1,7 @@
 {
   "-lockator-liteos": [],
   "-setprop": [
-    "cpa.lock.lockinfo=OsIntLock",
+    "cpa.lock.lockinfo=spin_lock",
     "cpa.lock.reduceUselessLocks=true"
   ]
 }
