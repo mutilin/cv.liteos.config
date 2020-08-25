@@ -52,8 +52,8 @@
   "Launcher": {
     "scheduler": "local",
     "resource limits": {
-      "CPU time": 1800,
-      "memory size": 5,
+      "CPU time": 10800,
+      "memory size": 32,
       "number of cores": 2
     }
   },
