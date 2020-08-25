@@ -1,0 +1,121 @@
+diff --git a/config/includes/lockator/lockStatistics-liteos.properties b/config/includes/lockator/lockStatistics-liteos.properties
+new file mode 100644
+index 0000000..c614519
+--- /dev/null
++++ b/config/includes/lockator/lockStatistics-liteos.properties
+@@ -0,0 +1,84 @@
++#include lockStatistics-predicate.properties
++
++cpa.callstack.skipRecursion=true
++
++output.disable = true
++cpa.usage.outputType = KLEVER
++cpa.usage.disableNotesFor = kprintf, handle_error, link_free_buf, set_suid, free_uarea_block, free_pixcb
++cpa.usage.export.encodeIdentifier = true
++cpa.lock.stopAfterLockLimit = true
++
++spin_lock.lock = OsIntLock
++spin_lock.cpu_spin_lock.parameters = 1
++spin_lock.cpu_spin_trylock.parameters = 1
++spin_lock.unlock = OsIntRestore
++spin_lock.cpu_spin_unlock.parameters = 1
++spin_lock.maxDepth = 3
++
++cpa.usage.abortfunctions = exit, _exit, pthread_exit, panic, ldv_check_final_state
++
++cpa.usage.binderFunctions = INIT_LIST_HEAD, list_add, list_add_tail, list_del, list_replace, list_replace_init, list_del_init, list_move, list_move_tail, list_is_last, list_empty, ldv_list_get_first, ldv_list_is_stop, ldv_list_get_next
++
++cpa.usage.skippedvariables.byNamePrefix = ldv_
++cpa.usage.skippedvariables.byType = struct ath_tx_stats
++cpa.usage.skippedvariables.byFunction = entry_point, INIT_LIST_HEAD, __list_del, __list_add, list_add
++cpa.usage.skippedvariables.byFunctionPrefix = ldv_initialyze
++
++INIT_LIST_HEAD.parameters = 1
++INIT_LIST_HEAD.pInfo = WRITE:1
++
++list_add.parameters = 2
++list_add.pInfo = WRITE:1, WRITE:1
++# first parameter (new) --> {redirect to} --> second parameter (list head)
++list_add.linkInfo = 1, 2
++
++list_add_tail.parameters = 2
++list_add_tail.pInfo = WRITE:1, WRITE:1
++list_add_tail.linkInfo = 1, 2
++
++list_del.parameters = 1
++list_del.pInfo = WRITE:1
++
++list_replace.parameters = 2
++list_replace.pInfo = WRITE:1, WRITE:1
++list_replace.linkInfo = 2, 1
++
++list_replace_init.parameters = 2
++list_replace_init.pInfo = WRITE:1, WRITE:1
++list_replace_init.linkInfo = 2, 1
++
++list_del_init.parameters = 1
++list_del_init.pInfo = WRITE:1
++
++list_move.parameters = 2
++list_move.pInfo = WRITE:1, WRITE:1
++list_move.linkInfo = 1, 2
++
++list_move_tail.parameters = 2
++list_move_tail.pInfo = WRITE:1, WRITE:1
++list_move_tail.linkInfo = 1, 2
++
++list_is_last.parameters = 2
++list_is_last.pInfo = READ:1, READ:1
++
++list_empty.parameters = 1
++list_empty.pInfo = READ:1
++
++ldv_list_get_first.parameters = 1
++ldv_list_get_first.pInfo = READ:1
++ldv_list_get_first.linkInfo = 0, 1
++
++ldv_list_is_stop.parameters = 2
++ldv_list_is_stop.pInfo = READ:1, READ:1
++
++ldv_list_get_next.parameters = 1
++ldv_list_get_next.pInfo = READ:1
++ldv_list_get_next.linkInfo = 0, 1
++
++cfa.threads.threadCreate = ldv_thread_create, ldv_create_process
++cfa.threads.threadSelfCreate = ldv_thread_create_N
++cfa.threads.threadJoin = ldv_thread_join
++cfa.threads.threadSelfJoin = ldv_thread_join_N
++
++cpa.thread.skipTheSameThread=true
++
+diff --git a/config/includes/lockator/sharedAnalysis_liteos.properties b/config/includes/lockator/sharedAnalysis_liteos.properties
+new file mode 100644
+index 0000000..4b0e638
+--- /dev/null
++++ b/config/includes/lockator/sharedAnalysis_liteos.properties
+@@ -0,0 +1,8 @@
++#include sharedAnalysis-core.properties
++
++cpa.local.allocatefunctions = memAlloc, malloc, _zalloc, kzalloc, kmalloc, kcalloc, kstrdup, kasprintf, devm_kzalloc, ldv_successful_alloc, external_allocated_data, ldv_malloc_unknown_size, ldv_calloc_unknown_size, ldv_zalloc_unknown_size, ldv_malloc, ldv_calloc, ldv_xmalloc, ldv_xzalloc, ldv_xmalloc_unknown_size, __kmalloc, ldv_kzalloc, sk_alloc, ERR_PTR, kmem_cache_alloc, calloc, ldv_zalloc, sock_wmalloc, alloc, realloc, alloc_poolcb, zzkrn_alloc, slab_alloc, heap_alloc_unsafe, heap_meta_alloc, pool_brk_lo, alloc_sample_pool, zzalloc_uarea_block, mm_zalloc, alloc_pixcb, alloc_attach_entry, ialloc_attach_entry, heap_alloc_private, alloc, trace_alloc_from, trace_alloc_from_to, receive, LOS_MemAlloc, LOS_MemRealloc
++
++cpa.local.conservativefunctions = list_init_link
++
++# cpa.local.localvariables = _pcb
++
+diff --git a/config/lockator-liteos.properties b/config/lockator-liteos.properties
+new file mode 100644
+index 0000000..e231263
+--- /dev/null
++++ b/config/lockator-liteos.properties
+@@ -0,0 +1,11 @@
++#include includes/lockator/lockator-core.properties
++# The used analyses.
++restartAlgorithm.configFiles = includes/lockator/sharedAnalysis_liteos.properties, includes/lockator/lockStatistics-liteos.properties
++
++# There are many real function calls of pthread_create
++cfa.threads.threadCreate = ldv_thread_create, ldv_create_process
++cfa.threads.threadSelfCreate = ldv_thread_create_N
++cfa.threads.threadJoin = ldv_thread_join
++cfa.threads.threadSelfJoin = ldv_thread_join_N
++restartAlgorithm.subcoverageFile = subcoverage.info
++

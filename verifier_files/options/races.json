@@ -1,7 +1,7 @@
 {
-  "-lockator-linux": [],
+  "-lockator-liteos": [],
   "-setprop": [
-    "cpa.lock.lockinfo=LOS_SpinLockSave_18",
+    "cpa.lock.lockinfo=OsIntLock",
     "cpa.lock.reduceUselessLocks=true"
   ]
 }
