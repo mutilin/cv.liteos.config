@@ -55,7 +55,8 @@
       "CPU time": 10800,
       "memory size": 32,
       "number of cores": 2
-    }
+    },
+    "statistics time": 800
   },
   "Exporter": {
     "version": "liteos",
