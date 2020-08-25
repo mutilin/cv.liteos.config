@@ -1354,3 +1354,16 @@ index e06d271..079ae8d 100644
 
 
  #define ATI "ATI\r"
+diff --git a/components/lib/libsec/src/output.inl b/components/lib/libsec/src/output.inl
+index 20dd4b3..f344f5a 100644
+--- a/components/lib/libsec/src/output.inl
++++ b/components/lib/libsec/src/output.inl
+@@ -924,7 +924,7 @@ SECUREC_INLINE void SecDecodeTypeSchar(SecFormatAttr *attr)
+     } else {
+         /* Precision assigned */
+         size_t textLen;
+-        SECUREC_CALC_STR_LEN(attr->text.str, (size_t)(unsigned int)attr->precision, &textLen);
++        // SECUREC_CALC_STR_LEN(attr->text.str, (size_t)(unsigned int)attr->precision, &textLen);
+         attr->textLen = (int)textLen;
+     }
+ }
