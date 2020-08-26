@@ -2,6 +2,7 @@
   "-lockator-liteos": [],
   "-setprop": [
     "cpa.lock.lockinfo=spin_lock",
+    "cegar.maxIterations=0",
     "cpa.lock.reduceUselessLocks=true"
   ]
 }
