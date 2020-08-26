@@ -1,3 +1,16 @@
+diff --git a/config/includes/lockator/lockStatistics-predicate.properties b/config/includes/lockator/lockStatistics-predicate.properties
+index f9c3f54..bf02161 100644
+--- a/config/includes/lockator/lockStatistics-predicate.properties
++++ b/config/includes/lockator/lockStatistics-predicate.properties
+@@ -8,7 +8,7 @@ cpa.usage.refinement.refinementChain = IdentifierIterator, PointIterator, UsageI
+ solver.solver = SMTINTERPOL
+ analysis.algorithm.CEGAR = true
+ 
+-cpa.usage.printOnlyTrueUnsafes = true
++cpa.usage.printOnlyTrueUnsafes = false
+ cpa.usage.refinement.iterationLimit = 2
+ cpa.usage.useSoundRegions=true
+ cpa.lock.refinement = false
 diff --git a/config/includes/lockator/lockStatistics-liteos.properties b/config/includes/lockator/lockStatistics-liteos.properties
 new file mode 100644
 index 0000000..c614519
@@ -96,7 +109,7 @@ index 0000000..4b0e638
 @@ -0,0 +1,8 @@
 +#include sharedAnalysis-core.properties
 +
-+cpa.local.allocatefunctions = memAlloc, malloc, _zalloc, kzalloc, kmalloc, kcalloc, kstrdup, kasprintf, devm_kzalloc, ldv_successful_alloc, external_allocated_data, ldv_malloc_unknown_size, ldv_calloc_unknown_size, ldv_zalloc_unknown_size, ldv_malloc, ldv_calloc, ldv_xmalloc, ldv_xzalloc, ldv_xmalloc_unknown_size, __kmalloc, ldv_kzalloc, sk_alloc, ERR_PTR, kmem_cache_alloc, calloc, ldv_zalloc, sock_wmalloc, alloc, realloc, alloc_poolcb, zzkrn_alloc, slab_alloc, heap_alloc_unsafe, heap_meta_alloc, pool_brk_lo, alloc_sample_pool, zzalloc_uarea_block, mm_zalloc, alloc_pixcb, alloc_attach_entry, ialloc_attach_entry, heap_alloc_private, alloc, trace_alloc_from, trace_alloc_from_to, receive, LOS_MemAlloc, LOS_MemRealloc
++cpa.local.allocatefunctions = memAlloc, malloc, _zalloc, kzalloc, kmalloc, kcalloc, kstrdup, kasprintf, devm_kzalloc, ldv_successful_alloc, external_allocated_data, ldv_malloc_unknown_size, ldv_calloc_unknown_size, ldv_zalloc_unknown_size, ldv_malloc, ldv_calloc, ldv_xmalloc, ldv_xzalloc, ldv_xmalloc_unknown_size, __kmalloc, ldv_kzalloc, sk_alloc, ERR_PTR, kmem_cache_alloc, calloc, ldv_zalloc, sock_wmalloc, alloc, realloc, alloc_poolcb, zzkrn_alloc, slab_alloc, heap_alloc_unsafe, heap_meta_alloc, pool_brk_lo, alloc_sample_pool, zzalloc_uarea_block, mm_zalloc, alloc_pixcb, alloc_attach_entry, ialloc_attach_entry, heap_alloc_private, alloc, trace_alloc_from, trace_alloc_from_to, receive, LOS_MemAlloc, LOS_MemRealloc, OsHeapAllocAlign
 +
 +cpa.local.conservativefunctions = list_init_link
 +
